@@ -43,17 +43,22 @@ int main(int argc, char *argv[])
 
 // ****************************************** fork template ******************************************
 /*
+// create child process
 int rc = fork();
 
-if (rc < 0) // fork failed; exit
+// fork failed; exit
+if (rc < 0)
 {
   fprintf(stderr, "fork failed\n");
   exit(1);
 }
-else if (rc == 0) // child process satisfies this branch
+// child process
+else if (rc == 0)
 {
   exit(0);
 }
+
+// parent process
 waitpid(rc, NULL, 0);
 or...
 wait(NULL);
