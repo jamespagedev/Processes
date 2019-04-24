@@ -32,7 +32,9 @@ void forker(int nprocesses)
         */
         wait(NULL);
         printf("\nChild Process execl:\n");
-        execl("/bin/ls", "ls", "-1", (char *)0); // returns child process, no need for `exit()`
+        execl("/bin/ls", "ls", "-1", (char *)0); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Child Process execle
       else if (nprocesses == 5)
@@ -43,7 +45,9 @@ void forker(int nprocesses)
         */
         printf("\nChild Process execle:\n");
         char *env_le[] = {"HOME=/usr/jamespage", "LOGNAME=home", (char *)0};
-        execle("/bin/ls", "ls", "-l", (char *)0, env_le); // returns child process, no need for `exit()`
+        execle("/bin/ls", "ls", "-l", (char *)0, env_le); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Child Process execlp
       else if (nprocesses == 4)
@@ -53,7 +57,9 @@ void forker(int nprocesses)
         by the PATH environment variable.
         */
         printf("\nChild Process execlp:\n");
-        execlp("ls", "ls", "-l", (char *)0); // returns child process, no need for `exit()`
+        execlp("ls", "ls", "-l", (char *)0); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Child Process execv
       else if (nprocesses == 3)
@@ -63,7 +69,9 @@ void forker(int nprocesses)
         */
         printf("\nChild Process execv:\n");
         char *cmd_cv[] = {"ls", "-l", (char *)0};
-        execv("/bin/ls", cmd_cv); // returns child process, no need for `exit()`
+        execv("/bin/ls", cmd_cv); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Child Process execve
       else if (nprocesses == 2)
@@ -75,7 +83,9 @@ void forker(int nprocesses)
         printf("\nChild Process execve:\n");
         char *cmd_ve[] = {"ls", "-l", (char *)0};
         char *env_ve[] = {"HOME=/usr/jamespage", "LOGNAME=home", (char *)0};
-        execve("/bin/ls", cmd_ve, env_ve);
+        execve("/bin/ls", cmd_ve, env_ve); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Child Process execvp
       else if (nprocesses == 1)
@@ -87,7 +97,9 @@ void forker(int nprocesses)
         */
         printf("\nChild Process execvp:\n");
         char *cmd_vp[] = {"ls", "-l", (char *)0};
-        execvp("ls", cmd_vp);
+        execvp("ls", cmd_vp); // returns child process (only if no issues), no need for `exit()` (only if no issues)
+        perror("exec");
+        exit(1);
       }
       // Default unhandled child process
       else
