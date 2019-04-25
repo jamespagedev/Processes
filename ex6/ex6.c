@@ -41,7 +41,8 @@ int main()
 
   // Avg time to execute write() with an empty stdout
   diff = BILLION * (end.tv_sec - start.tv_sec) + end.tv_nsec - start.tv_nsec;
-  printf("elapsed time = %llu nanoseconds\n", (long long unsigned int)diff);
+  int avg = (int)diff / number_iter;
+  printf("elapsed time = %d nanoseconds\n", avg);
 
   return 0;
 }
