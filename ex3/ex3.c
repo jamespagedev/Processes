@@ -9,7 +9,25 @@
 
 int main(void)
 {
-    // Your code here
+  // Your code here
+  // create child process
+  int rc = fork();
 
-    return 0;
+  // fork failed; exit
+  if (rc < 0)
+  {
+    fprintf(stderr, "fork failed\n");
+    exit(1);
+  }
+  // child process
+  else if (rc == 0)
+  {
+    printf("hello\n");
+    exit(0);
+  }
+
+  // parent process
+  wait(NULL);
+  printf("goodbye\n");
+  return 0;
 }
